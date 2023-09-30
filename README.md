@@ -3,6 +3,9 @@
 -create react app.
 -configure tailwing using tailwind css
 
+-Header with image and logo
+-login form
+
 #Features:
 -Login / sign up
 -sign up form - redirect to browse page.
