@@ -10,6 +10,10 @@
 -sign up fprm
 -form validation
 -useRef hook
+-firebaseAuthentication
+-deploy in firebase
+-create sign up user account
+
 
 #Features:
 -Login / sign up

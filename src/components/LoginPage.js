@@ -1,9 +1,11 @@
 import React, { useState,useRef } from "react";
 import Header from "./Header";
 import { ValidateForm } from "../utils/validate";
+import { auth } from "../utils/firebase";
+import {signInWithEmailAndPassword,createUserWithEmailAndPassword} from "firebase/auth";
 
 const LoginPage = () => {
-  const [signInStatus, setSignInStatus] = useState(false);
+  const [signInStatus, setSignInStatus] = useState(true);
   const [errMessage, seterrMessage] =  useState('');
   const email = useRef(null);
   const Fullname  = useRef(null)
@@ -14,9 +16,45 @@ const LoginPage = () => {
   };
 
   const handleSignUpButton = () =>{
-const LoginError = ValidateForm(Fullname?.current?.value,email?.current?.value,password?.current?.value);
-console.log('Fullname.current.value: ', Fullname.current.value);
-seterrMessage(LoginError)
+const loginErrorMessage = ValidateForm(email?.current?.value,password?.current?.value);
+console.log('email?.current?.value: ', email?.current?.value);
+seterrMessage(loginErrorMessage)
+
+if(loginErrorMessage) return;
+
+if(!signInStatus){
+// Sign Up
+createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log('user: ', user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    seterrMessage("Email already in use!")
+    // ..
+  })
+}else{
+  // sign In
+  signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log('user: ', user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    seterrMessage("User Not Found!")
+  });
+  }
+  }
+   const toggeSignInForm=()=>{
+    setSignInStatus(!signInStatus);
   }
   return (
     <div>
