@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import Header from "./Header";
+import { ValidateForm } from "../utils/validate";
 
 const LoginPage = () => {
   const [signInStatus, setSignInStatus] = useState(false);
+  const [errMessage, seterrMessage] =  useState('');
+  const email = useRef(null);
+  const Fullname  = useRef(null)
+  const password = useRef(null);
 
   const handleSignUpForm = () => {
     setSignInStatus(!signInStatus);
   };
+
+  const handleSignUpButton = () =>{
+const LoginError = ValidateForm(Fullname?.current?.value,email?.current?.value,password?.current?.value);
+console.log('Fullname.current.value: ', Fullname.current.value);
+seterrMessage(LoginError)
+  }
   return (
     <div>
       <Header />
@@ -16,13 +27,14 @@ const LoginPage = () => {
           alt="Netflix backbround"
         />
       </div>
-      <form className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
+      <form onSubmit={(e)=> e.preventDefault()} className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
         <h1 className="font-bold text-3xl py-2">
           {signInStatus ? "Sign In" : "Sign Up"}
         </h1>
         <br />
         {!signInStatus ? (
           <input
+            ref={Fullname}
             type="text"
             placeholder="Name"
             className="p-2 my-2 w-full bg-[#333333]"
@@ -32,16 +44,20 @@ const LoginPage = () => {
         )}
         <input
           type="text"
+          ref={email}
           placeholder="Email Address"
           className="p-2 my-2 w-full bg-[#333333]"
         ></input>
 
         <input
           type="password"
+          ref={password}
           placeholder="Password"
           className="p-2 my-2 w-full bg-[#333333]"
         ></input>
-        <button className="p-4 my-4 bg-red-700 w-full">
+        <p className="text-red-300 py-2 px-2 font-bold text-large"
+      >{errMessage }</p>
+        <button  className="p-2 my-4 bg-red-700 w-full" onClick={handleSignUpButton}> 
           {signInStatus ? "Sign In" : "Sign Up"}
         </button>
         <p className="cursor-pointer text-center" onClick={handleSignUpForm}>

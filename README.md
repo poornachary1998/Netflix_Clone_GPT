@@ -4,7 +4,12 @@
 -configure tailwing using tailwind css
 
 -Header with image and logo
+-routing
+
 -login form
+-sign up fprm
+-form validation
+-useRef hook
 
 #Features:
 -Login / sign up
