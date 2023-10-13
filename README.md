@@ -13,6 +13,9 @@
 -firebaseAuthentication
 -deploy in firebase
 -create sign up user account
+-Implement sign in sign up user API,
+-created a user store(redux store) with userSilce
+-
 
 
 #Features:

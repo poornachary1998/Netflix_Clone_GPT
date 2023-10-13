@@ -2,9 +2,15 @@ import React, { useState,useRef } from "react";
 import Header from "./Header";
 import { ValidateForm } from "../utils/validate";
 import { auth } from "../utils/firebase";
-import {signInWithEmailAndPassword,createUserWithEmailAndPassword} from "firebase/auth";
+import {signInWithEmailAndPassword,createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { addUser } from "../utils/userSlice";
+import { useDispatch } from "react-redux";
+
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [signInStatus, setSignInStatus] = useState(true);
   const [errMessage, seterrMessage] =  useState('');
   const email = useRef(null);
@@ -29,6 +35,29 @@ createUserWithEmailAndPassword(auth, email.current.value, password.current.value
     // Signed up 
     const user = userCredential.user;
     console.log('user: ', user);
+    
+    updateProfile(user, {
+      displayName: Fullname.current.value, photoURL: "https://media.licdn.com/dms/image/C5603AQFVtu1WXMpEIA/profile-displayphoto-shrink_100_100/0/1650520493207?e=1702512000&v=beta&t=LSYCuk-Zcc1k09mR_eJzfZt701VSJer0gZkUUP2fse4"
+    }).then(() => {
+      // Profile updated!
+      // ...
+// we are not getting the values of display name and photo because user is not updated in redux. We need to pull the user updated and dispatch the action.
+const {uid, email, displayName, photoURL} = auth.currentUser;
+dispatch( addUser({
+  uid:uid,
+  email:email,
+  displayName:displayName, 
+  photoURL:photoURL   
+}))
+
+      navigate("/browse")
+    }).catch((error) => {
+      // An error occurred
+      // ...
+      console.log(error)
+      seterrMessage(error.message)
+    });
+    
     // ...
   })
   .catch((error) => {
@@ -44,16 +73,17 @@ createUserWithEmailAndPassword(auth, email.current.value, password.current.value
     // Signed in 
     const user = userCredential.user;
     console.log('user: ', user);
+    navigate("/browse")
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    seterrMessage("User Not Found!")
+    seterrMessage(errorCode +"-"+ errMessage)
   });
   }
   }
-   const toggeSignInForm=()=>{
+  const toggeSignInForm=()=>{
     setSignInStatus(!signInStatus);
   }
   return (
