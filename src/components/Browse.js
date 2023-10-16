@@ -1,12 +1,9 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import Header from "./Header";
+import React from 'react'
+import Header from "./Header"
+import useNowPlayingMovies from './customHooks/useNowPlayingMovies';
 
 const Browse = () => {
-  const navigate = useNavigate();
-  const handleSignoutButton = () =>{
-    navigate('/')
-  }
+useNowPlayingMovies();
   return <><Header/></>;
 };
 
