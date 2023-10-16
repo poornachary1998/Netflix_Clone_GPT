@@ -3,13 +3,11 @@ import Header from "./Header";
 import { ValidateForm } from "../utils/validate";
 import { auth } from "../utils/firebase";
 import {signInWithEmailAndPassword,createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
 
 
 const LoginPage = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [signInStatus, setSignInStatus] = useState(true);
   const [errMessage, seterrMessage] =  useState('');
@@ -49,8 +47,6 @@ dispatch( addUser({
   displayName:displayName, 
   photoURL:photoURL   
 }))
-
-      navigate("/browse")
     }).catch((error) => {
       // An error occurred
       // ...
@@ -73,7 +69,6 @@ dispatch( addUser({
     // Signed in 
     const user = userCredential.user;
     console.log('user: ', user);
-    navigate("/browse")
     // ...
   })
   .catch((error) => {
@@ -83,16 +78,14 @@ dispatch( addUser({
   });
   }
   }
-  const toggeSignInForm=()=>{
-    setSignInStatus(!signInStatus);
-  }
+  
   return (
     <div>
       <Header />
       <div className="absolute">
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/f85718e8-fc6d-4954-bca0-f5eaf78e0842/ea44b42b-ba19-4f35-ad27-45090e34a897/IN-en-20230918-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt="Netflix backbround"
+          alt="Netflix background"
         />
       </div>
       <form onSubmit={(e)=> e.preventDefault()} className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
