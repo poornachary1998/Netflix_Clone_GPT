@@ -15,7 +15,9 @@
 -create sign up user account
 -Implement sign in sign up user API,
 -created a user store(redux store) with userSilce
--
+-bug fix: if user is not logged in redirect the user in browse page.
+-unsubscribe to the OnAuthStateChanged call back
+
 
 
 #Features:
