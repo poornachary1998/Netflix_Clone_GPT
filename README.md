@@ -29,8 +29,6 @@
 -embed the youtube video and make it autoplay and mute
 -tailwind css to make main container looks good.
 
-
-
 #Features:
 -Login / sign up
 -sign up form - redirect to browse page.
