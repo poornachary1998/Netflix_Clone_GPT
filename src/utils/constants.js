@@ -13,4 +13,4 @@ export const API_Constants = {
   },
 };
 
-export const Img_URL = 'https://image.tmdb.org/t/p/w500/';
+export const Img_URL = "https://image.tmdb.org/t/p/w500/";
