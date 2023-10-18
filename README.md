@@ -18,8 +18,6 @@
 -bug fix: if user is not logged in redirect the user in browse page.
 -unsubscribe to the OnAuthStateChanged call back
 
-
-
 #Features:
 -Login / sign up
 -sign up form - redirect to browse page.

@@ -14,7 +14,7 @@ const firebaseConfig = {
   storageBucket: "netflixgpt11.appspot.com",
   messagingSenderId: "1026164819054",
   appId: "1:1026164819054:web:77293a2d27816e56ad127f",
-  measurementId: "G-TBP2N6WYYJ"
+  measurementId: "G-TBP2N6WYYJ",
 };
 
 // Initialize Firebase
