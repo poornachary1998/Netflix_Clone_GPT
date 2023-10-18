@@ -16,10 +16,8 @@ const LoginPage = () => {
   const [signInStatus, setSignInStatus] = useState(true);
   const [errMessage, seterrMessage] = useState("");
   const email = useRef(null);
-  // console.log('email: ', email);
   const Fullname = useRef(null);
   const password = useRef(null);
-  // console.log('password: ', password);
 
   const handleSignUpForm = () => {
     setSignInStatus(!signInStatus);
@@ -30,7 +28,6 @@ const LoginPage = () => {
       email?.current?.value,
       password?.current?.value,
     );
-    console.log("email?.current?.value: ", email);
     seterrMessage(loginErrorMessage);
 
     if (loginErrorMessage) return;
@@ -45,7 +42,6 @@ const LoginPage = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log("user: ", user);
 
           updateProfile(user, {
             displayName: Fullname.current.value,
@@ -68,7 +64,6 @@ const LoginPage = () => {
             .catch((error) => {
               // An error occurred
               // ...
-              console.log(error);
               seterrMessage(error.message);
             });
 
@@ -90,7 +85,6 @@ const LoginPage = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("user: ", user);
           // ...
         })
         .catch((error) => {
