@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const GPTSuggestions = () => {
-  return (
-    <div>GPTSuggestions</div>
-  )
-}
+  return <div>GPTSuggestions</div>;
+};
 
-export default GPTSuggestions
+export default GPTSuggestions;

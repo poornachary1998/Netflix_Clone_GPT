@@ -99,10 +99,7 @@ const LoginPage = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src={bg_URL}
-          alt="Netflix background"
-        />
+        <img src={bg_URL} alt="Netflix background" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}

@@ -13,8 +13,8 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
-  const gptToggle = useSelector((store)=> store?.GPT?.showGPTSearch)
-  console.log('gptToggle: ', gptToggle);
+  const gptToggle = useSelector((store) => store?.GPT?.showGPTSearch);
+  console.log("gptToggle: ", gptToggle);
   const handleSignOut = () => {
     const auth = getAuth();
     signOut(auth)
@@ -48,10 +48,10 @@ const Header = () => {
     return () => unSubscribe;
   }, []);
 
-  const handleGPTSearch = () =>{
-dispatch(gptState())
-  }
-  console.log()
+  const handleGPTSearch = () => {
+    dispatch(gptState());
+  };
+  console.log();
 
   return (
     <>
@@ -59,15 +59,21 @@ dispatch(gptState())
         <img className="w-40" src={Logo} alt="Netflix Logo"></img>
         {user && (
           <div className="flex px-2">
-
-            <button className="px-4 mx-8  py-3 my-2 text-white rounded-lg bg-purple-700" onClick={handleGPTSearch}>
-              {gptToggle ? 'HomePage': 'GPT Search' }</button>
+            <button
+              className="px-4 mx-8  py-3 my-2 text-white rounded-lg bg-purple-700"
+              onClick={handleGPTSearch}
+            >
+              {gptToggle ? "HomePage" : "GPT Search"}
+            </button>
             <img
               className="w-12 h-12 mx-1 my-2"
               alt="user-icon"
               src={user?.photoURL}
             ></img>
-            <button className="font-bold text-white mx-4 my-2" onClick={handleSignOut}>
+            <button
+              className="font-bold text-white mx-4 my-2"
+              onClick={handleSignOut}
+            >
               Sign Out
             </button>
           </div>

@@ -16,7 +16,7 @@ const useMovieTrailer = (id) => {
     const filterTrailer = json.results.filter(
       (video) => video.type === "Teaser",
     );
-      
+
     // if theere are no type of trailers then it will take the json results of any time and play any video.
     const trailer = filterTrailer.length ? filterTrailer[0] : json.results[0];
 
