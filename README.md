@@ -28,6 +28,16 @@
 -update store with trailer data video
 -embed the youtube video and make it autoplay and mute
 -tailwind css to make main container looks good.
+-Build secondary component
+-Build Movie List.
+-Build Movie Card
+-TMDB Image CDN URL.
+-Made tge browse page amazing with tailwind css
+-usePopularMovies custom Hook.
+- GPT Search Page
+-GPT Search Bar
+
+
 
 #Features:
 -Login / sign up

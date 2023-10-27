@@ -3,7 +3,6 @@ import MovieList from "./MovieList";
 
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store?.movie);
-  console.log("movies: ", movies);
   return (
     movies.nowPlayingMovies && (
       <div className="bg-black">

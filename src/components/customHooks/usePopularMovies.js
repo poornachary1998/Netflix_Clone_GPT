@@ -13,7 +13,6 @@ const usePopularMovies = () => {
       API_Constants,
     );
     const json = await data.json();
-    console.log("json: ", json);
 
     dispatch(addPopularMovies(json.results));
   };

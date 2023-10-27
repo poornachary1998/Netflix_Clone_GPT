@@ -13,7 +13,6 @@ const useUpcomingMovies = () => {
       API_Constants,
     );
     const json = await data.json();
-    console.log("json: ", json);
 
     dispatch(addUpcomingMovies(json.results));
   };
