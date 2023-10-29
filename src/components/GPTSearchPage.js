@@ -6,7 +6,7 @@ import GPTSuggestions from "./GPTSuggestions";
 const GPTSearchPage = () => {
   return (
     <>
-      <div className="absolute -z-10">
+      <div className="fixed -z-10">
         <img src={bg_URL} alt="Netflix background" />
       </div>
       <GPTSearchBar />

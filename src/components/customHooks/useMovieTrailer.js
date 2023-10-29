@@ -13,7 +13,7 @@ const useMovieTrailer = (id) => {
     const json = await data.json();
 
     // in json we get all the videos related to the ID's but we need to filter which has the type of trailer to show in the background.
-    const filterTrailer = json.results.filter(
+    const filterTrailer = json.results?.filter(
       (video) => video.type === "Teaser",
     );
 
