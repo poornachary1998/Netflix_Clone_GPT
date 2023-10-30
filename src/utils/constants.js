@@ -23,4 +23,4 @@ export const bg_URL =
 
 // export const OpenAI_Key = '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'
 
-export const OPENAI_KEY ='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'
+export const OPENAI_KEY = "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";
